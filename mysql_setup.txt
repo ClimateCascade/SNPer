@@ -1,0 +1,7 @@
+###MySQL Setup on Mason.Indiana.edu
+
+Databases are managed by the RDC (Research Database Complex).
+
+You will need to setup an RDC account, see the instructions here:
+https://kb.iu.edu/d/amuw
+
