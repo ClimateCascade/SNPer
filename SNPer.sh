@@ -92,7 +92,7 @@ genotypes -b $batchid -P ./output -r $minprog -m $minstack -t GEN -s -c
 mkdir rdata
 INPUT=./output/batch_$batchid.haplotypes_$minprog.tsv
 OUTPUT=./rdata/batch_$batchid.haplotypes_$minprog.gen
-Rscript ../haplotype_to_genepop/haplotype_to_genepop.R $INPUT $OUTPUT radtags
+Rscript ../bin/haplotype_to_genepop/haplotype_to_genepop.R $INPUT $OUTPUT radtags
 
 # INPUT=./output/batch_$batchid.haplotypes_$minprog.tsv
 # VAR=./output/batch_$batchid.haplotypes_variable.tsv
