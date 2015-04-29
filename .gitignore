@@ -3,4 +3,10 @@
 .Rapp.history
 
 # Data files 
-SNPs/*
+SNPs/filtered/*
+SNPs/indexes/*
+SNPs/original/* 
+SNPs/output/*
+SNPs/sam/*
+SNPs/sam_map.sh
+SNPs/trimmed/*
