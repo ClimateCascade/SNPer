@@ -6,7 +6,7 @@
 ###### ### ### ### ### ### ### ### ### ### ### ### ### 
 
 library(adegenet)
-if (any(ls()=='y')){}else{y <- read.genepop('../SNPs/rdata/batch_2.haplotypes_3.gen')}
+if (any(ls()=='y')){}else{y <- read.genepop('../rdata/batch_2.haplotypes_3.gen')}
 y
 names(y)
 y$tab[1:5,1:15]
