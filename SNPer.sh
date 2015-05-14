@@ -10,11 +10,11 @@
 ##############################
 
 #Assume you are working locally (./) with an unzipped file 
-outdir=SNPs #output directory
+outdir=ddr1 #output directory
 demultiplex=true
 snp=false
-barcodes=~/mkls/ddRADs/ddRAD2 #formatted: GCATG<tab>03A
-rads=~/mkls/ddRADs/scahan_VGN_20141014_CCO3-RAD_R1.fastq #unzipped file path
+barcodes=~/mkls/ddRADs/ddRAD1 #formatted: GCATG<tab>03A
+rads=~/scahan/ddRAD1/scahan_VGN_20140730_2014_ddRad1_R1.fastq #unzipped file path
 refmap=~/indexes
 batchid=2 #the batch id used in stacks ref_map.pl and genotype.lp
 nmismatch=3 #ref_map.pl -n = number of mismatches
