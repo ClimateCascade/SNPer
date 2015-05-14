@@ -11,7 +11,8 @@
 
 #Assume you are working locally (./) with an unzipped file 
 outdir=SNPs #output directory
-demultiplexed=true
+demultiplex=true
+snp=false
 barcodes=~/mkls/ddRADs/ddRAD2 #formatted: GCATG<tab>03A
 rads=~/mkls/ddRADs/scahan_VGN_20141014_CCO3-RAD_R1.fastq #unzipped file path
 refmap=~/indexes
@@ -35,9 +36,11 @@ FASTQ=/N/soft/mason/galaxy-apps/fastx_toolkit_0.0.13/fastq_quality_filter
 mkdir $outdir
 cd $outdir
 
-if [ $demultiplexed = "false"]; then 
+if [ $demultiplex = "true"]; then 
     sabre se -m 1 -f $rads -b $barcodes -u unknown
-fi
+fi ## end demultiplex
+
+if [ $snp = "true"]; then 
 
 fqs=$(ls)
 mkdir trimmed original
@@ -97,6 +100,8 @@ mkdir rdata
 INPUT=./output/batch_$batchid.haplotypes_$minprog.tsv
 OUTPUT=./rdata/batch_$batchid.haplotypes_$minprog.gen
 Rscript ../bin/haplotype_to_genepop/haplotype_to_genepop.R $INPUT $OUTPUT radtags
+
+fi #end snp
 
 # INPUT=./output/batch_$batchid.haplotypes_$minprog.tsv
 # VAR=./output/batch_$batchid.haplotypes_variable.tsv
