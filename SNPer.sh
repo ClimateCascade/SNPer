@@ -10,10 +10,10 @@
 ##############################
 
 #Assume you are working locally (./) with an unzipped file 
-outdir=ddr1 #output directory
+outdir=../ddr1 #output directory
 demultiplex=true
 snp=false
-barcodes=~/mkls/ddRADs/ddRAD1 #formatted: GCATG<tab>03A
+barcodes=~/mkls/ddRADs/ddRAD1.txt #formatted: GCATG<tab>03A
 rads=~/scahan/ddRAD1/scahan_VGN_20140730_2014_ddRad1_R1.fastq #unzipped file path
 refmap=~/indexes
 batchid=2 #the batch id used in stacks ref_map.pl and genotype.lp
