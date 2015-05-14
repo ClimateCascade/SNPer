@@ -10,7 +10,7 @@
 ##############################
 
 #Assume you are working locally (./) with an unzipped file 
-outdir=../ddr1 #output directory
+outdir=SNPs #output directory
 demultiplex=true
 snp=false
 barcodes=~/mkls/ddRADs/ddRAD1.txt #formatted: GCATG<tab>03A
@@ -36,11 +36,11 @@ FASTQ=/N/soft/mason/galaxy-apps/fastx_toolkit_0.0.13/fastq_quality_filter
 mkdir $outdir
 cd $outdir
 
-if [ $demultiplex = "true"]; then 
+if [ $demultiplex = "true" ]; then 
     sabre se -m 1 -f $rads -b $barcodes -u unknown
 fi ## end demultiplex
 
-if [ $snp = "true"]; then 
+if [ $snp = "true" ]; then 
 
 fqs=$(ls)
 mkdir trimmed original
