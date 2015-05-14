@@ -11,14 +11,15 @@
 
 #Assume you are working locally (./) with an unzipped file 
 outdir=SNPs #output directory
-rads=~/mkls/ddRADs/scahan_VGN_20141014_CCO3-RAD_R1.fastq #unzipped file path
+demultiplexed=true
 barcodes=~/mkls/ddRADs/ddRAD2 #formatted: GCATG<tab>03A
+rads=~/mkls/ddRADs/scahan_VGN_20141014_CCO3-RAD_R1.fastq #unzipped file path
 refmap=~/indexes
 batchid=2 #the batch id used in stacks ref_map.pl and genotype.lp
 nmismatch=3 #ref_map.pl -n = number of mismatches
-mindepth=1 #ref_map.pl -m = minimum depth of coverage to report a stack
+mindepth=5 #ref_map.pl -m = minimum depth of coverage to report a stack
 nthreads=8 #ref_map.pl -T = number of threads
-minprog=3 #genotype.pl -r = minimum number of progeny to keep read
+minprog=1 #genotype.pl -r = minimum number of progeny to keep read
 minstack=5 #genotype.pl -m = minimum stack depth for exporting a locus
 maptype=GEN #genotype.pl -t = map type ('CP', 'DH', 'F2', 'BC1', and 'GEN')
 
@@ -31,10 +32,13 @@ FASTQ=/N/soft/mason/galaxy-apps/fastx_toolkit_0.0.13/fastq_quality_filter
 #################################
 ### Demultiplex, trim and filter
 #################################
-
 mkdir $outdir
 cd $outdir
-sabre se -m 1 -f $rads -b $barcodes -u unknown
+
+if [ $demultiplexed = "false"]; then 
+    sabre se -m 1 -f $rads -b $barcodes -u unknown
+fi
+
 fqs=$(ls)
 mkdir trimmed original
 for X in $fqs;
