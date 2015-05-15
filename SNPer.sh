@@ -11,8 +11,8 @@
 
 #Assume you are working locally (./) with an unzipped file 
 outdir=SNPs #output directory
-demultiplex=true
-snp=false
+demultiplex=false
+snp=true
 barcodes=~/ddRADs/ddRAD1.txt #formatted: GCATG<tab>03A
 rads=~/scahan/ddRAD1/scahan_VGN_20140730_2014_ddRad1_R1.fastq #unzipped file path
 refmap=~/indexes
