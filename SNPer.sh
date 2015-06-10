@@ -11,11 +11,11 @@
 
 #Assume you are working locally (./) with an unzipped file 
 outdir=SNPs #output directory
-demultiplex=false
-snp=true
-barcodes=~/ddRADs/ddRAD1.txt #formatted: GCATG<tab>03A
-rads=~/scahan/ddRAD1/scahan_VGN_20140730_2014_ddRad1_R1.fastq #unzipped file path
-refmap=~/indexes
+demultiplex=true
+snp=false
+barcodes= #formatted: GCATG<tab>03A
+rads= #unzipped file path
+refmap= #~/indexes
 batchid=2 #the batch id used in stacks ref_map.pl and genotype.lp
 nmismatch=3 #ref_map.pl -n = number of mismatches
 mindepth=5 #ref_map.pl -m = minimum depth of coverage to report a stack
@@ -47,7 +47,7 @@ mkdir trimmed original
 for X in $fqs;
 do 
     echo $X
-    $FASTX -Q33 -f 5 -i $X -o ./trimmed/$X;
+    $FASTX -Q33 -f 5 -l 95 -i $X -o ./trimmed/$X;
     mv $X original/$X;
 done
 mkdir filtered
