@@ -23,6 +23,14 @@ pydata=true
 barcodes=~/scahan/Aphaenogaster_RADfiles/ddRAD1.txt #formatted: GCATG<tab>03A
 rads=/N/u/mklau/Mason/mklau/ads/SNPer/ddRAD1238  #unzipped file path
 demultfiles=/N/u/mklau/Mason/mklau/ads/SNPer/ddRAD1238
+=======
+#Assume you are working locally (./) with an unzipped file 
+outdir=ddRAD1 #output directory
+demultiplex=true
+snp=false
+rdata=false
+barcodes=~/scahan/Aphaenogaster_RADfiles/ddRAD1.txt #formatted: GCATG<tab>03A
+rads=/N/u/mklau/Mason/scahan/ddRAD1/scahan_VGN_20140730_2014_ddRad1_R1.fastq #unzipped file path
 refmap=~/indexes #~/indexes
 batchid=2 #the batch id used in stacks ref_map.pl and genotype.lp
 nmismatch=3 #ref_map.pl -n = number of mismatches
@@ -107,7 +115,11 @@ if [ $snp = "true" ]; then
 ### Genotyping
 ###############
 # genotypes -b $batchid -P ./output -r $minprog -m $minstack -t GEN -s
+<<<<<<< HEAD
     genotypes -b $batchid -P ./output -r $minprog -m $minstack -t GEN -s -c
+=======
+genotypes -b $batchid -P ./output -r $minprog -m $minstack -t GEN -s -c
+>>>>>>> 65b128c3fc803e620c44b52e0e44504abde077c7
 fi #end snp
 
 ################################
@@ -125,6 +137,12 @@ if [ $pydata == "true" ]; then
     python ../bin/make_genotype_file_for_adegenet.py $INPUT
 fi
 
+=======
+    mkdir rdata
+    INPUT=./output/batch_$batchid.haplotypes_$minprog.tsv
+    OUTPUT=./rdata/batch_$batchid.haplotypes_$minprog.gen
+    Rscript ../bin/haplotype_to_genepop/haplotype_to_genepop.R $INPUT $OUTPUT radtags
+fi
 
 # INPUT=./output/batch_$batchid.haplotypes_$minprog.tsv
 # VAR=./output/batch_$batchid.haplotypes_variable.tsv
