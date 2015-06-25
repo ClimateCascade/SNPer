@@ -115,11 +115,8 @@ if [ $snp = "true" ]; then
 ### Genotyping
 ###############
 # genotypes -b $batchid -P ./output -r $minprog -m $minstack -t GEN -s
-<<<<<<< HEAD
     genotypes -b $batchid -P ./output -r $minprog -m $minstack -t GEN -s -c
-=======
-genotypes -b $batchid -P ./output -r $minprog -m $minstack -t GEN -s -c
->>>>>>> 65b128c3fc803e620c44b52e0e44504abde077c7
+    genotypes -b $batchid -P ./output -r $minprog -m $minstack -t GEN -s -c
 fi #end snp
 
 ################################
