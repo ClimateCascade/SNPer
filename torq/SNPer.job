@@ -4,8 +4,8 @@
 #PBS -l nodes=1:ppn=8,vmem=100gb,walltime=24:00:00
 #PBS -M matthewklau@fas.harvard.edu
 #PBS -m abe 
-#PBS -N ddr12.snps
+#PBS -N SNPer
 #PBS -j oe 
+#PBS -d /N/u/mklau/Mason/mklau
 
-cd /N/u/mklau/Mason/mkls/waSnps/ddr12/SNPer/
 sh SNPer.sh
