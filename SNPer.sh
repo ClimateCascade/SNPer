@@ -9,13 +9,15 @@
 ### Setup
 ##############################
 
-#Assume you are working locally (./) with an unzipped file 
+#Assume you are working locally (./) with unzipped and demultiplexed files
+
 outdir=ddRAD1 #output directory
 demultiplex=true
+
 snp=false
 rdata=false
-barcodes=~/scahan/Aphaenogaster_RADfiles/ddRAD1.txt #formatted: GCATG<tab>03A
-rads=/N/u/mklau/Mason/scahan/ddRAD1/scahan_VGN_20140730_2014_ddRad1_R1.fastq #unzipped file path
+
+
 refmap=~/indexes #~/indexes
 batchid=2 #the batch id used in stacks ref_map.pl and genotype.lp
 nmismatch=3 #ref_map.pl -n = number of mismatches
@@ -34,12 +36,12 @@ FASTQ=/N/soft/mason/galaxy-apps/fastx_toolkit_0.0.13/fastq_quality_filter
 #################################
 ### Demultiplex, trim and filter
 #################################
+
+
+
+
 mkdir $outdir
 cd $outdir
-
-if [ $demultiplex = "true" ]; then 
-    sabre se -m 1 -f $rads -b $barcodes -u unknown
-fi ## end demultiplex
 
 if [ $snp = "true" ]; then 
 
