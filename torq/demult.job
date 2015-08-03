@@ -7,9 +7,8 @@
 #PBS -N demultiplexing
 #PBS -j oe 
 
-
-ddrad=ddRAD4
-tail=_R1.fastq.gz
+ddrad=ddRAD9
+tail=_R1.fastq
 rads=~/scahan/flowcell_073015/samples_out/$ddrad/scahan_20150514_$ddrad$tail #unzipped file path
 bars=~/mklau/SNPer/docs/$ddrad.barcodes #formatted: GCATG<tab>03A
 
