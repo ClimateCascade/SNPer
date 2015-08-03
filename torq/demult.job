@@ -1,17 +1,17 @@
 #! /bin/bash
 
 #PBS -k o 
-#PBS -l nodes=1:ppn=8,vmem=100gb,walltime=14:00:00
+#PBS -l nodes=1:ppn=8,vmem=100gb,walltime=10:00:00
 #PBS -M matthewklau@fas.harvard.edu
 #PBS -m abe 
 #PBS -N demultiplexing
 #PBS -j oe 
-#PBS -d 
+
 
 ddrad=ddRAD4
 tail=_R1.fastq.gz
 rads=~/scahan/flowcell_073015/samples_out/$ddrad/scahan_20150514_$ddrad$tail #unzipped file path
-barcodes=~/scahan/Aphaenogaster_RADfiles/$ddrad.txt #formatted: GCATG<tab>03A
+bars=~/mklau/SNPer/docs/$ddrad.barcodes #formatted: GCATG<tab>03A
 
 output=$(echo $(echo $rads)_demult)
 
