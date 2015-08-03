@@ -11,15 +11,13 @@
 
 #Assume you are working locally (./) with unzipped and demultiplexed files
 
-outdir=ddRAD1 #output directory
-demultiplex=true
+outdir=ddRAD4_snps #output directory
 
-snp=false
+snp=true
 rdata=false
 
-
 refmap=~/indexes #~/indexes
-batchid=2 #the batch id used in stacks ref_map.pl and genotype.lp
+batchid=2 #the batch id used in stacks ref_map.pl and genotype.pl
 nmismatch=3 #ref_map.pl -n = number of mismatches
 mindepth=5 #ref_map.pl -m = minimum depth of coverage to report a stack
 nthreads=8 #ref_map.pl -T = number of threads
@@ -36,9 +34,6 @@ FASTQ=/N/soft/mason/galaxy-apps/fastx_toolkit_0.0.13/fastq_quality_filter
 #################################
 ### Demultiplex, trim and filter
 #################################
-
-
-
 
 mkdir $outdir
 cd $outdir
