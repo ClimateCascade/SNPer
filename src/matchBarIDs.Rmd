@@ -1,15 +1,23 @@
 ---
-author: MK Lau
-title: Warm Ants - Matching barcodes and samples IDs
+author: "MK Lau"
+title: "Warm Ants - Matching barcodes and samples IDs"
+date: "5Aug2015"
 output: html_document
 
 ---
 
+```{r eval=FALSE, echo=FALSE}
+ library(rmarkdown)
+render('matchBarIDs.Rmd')
+
+```
+
 ```{r }
 library(gdata)
+source('global.R')
 
-flow <- read.xls('~/SNPer/docs/RADseq_flowcell_072815_barcode-masterlist.xlsx')
-proj <- read.csv('~/SNPer/docs/Data_allocation_mastersheet_01-26-15.csv')
+flow <- read.xls('../docs/RADseq_flowcell_072815_barcode-masterlist.xlsx')
+proj <- read.csv('../docs/Data_allocation_mastersheet_01-26-15.csv')
 
 flow <- apply(flow,2,as.character)
 flow. <- toupper(flow)
@@ -23,6 +31,63 @@ ids <- sub(' ','',ids)
 ids <- sub('-','',ids)
 ids <- sub('_','',ids);ids <- sub('_','',ids);ids <- sub('_','',ids)
 
+```
+
+
+## Katie's Samples
+
+```{r }
+katie.field <- getProj(proj.id='Katie...field',flow=flow,proj=proj)[,c(11:13,15)]
+katie.field <- data.frame(katie.field,
+     ddRAD=getProj(proj.id='Katie...field',flow=flow,proj=proj,ddRAD=TRUE))
+katie.CG <- getProj(proj.id='Katie...CG',flow=flow,proj=proj)[,c(11:13,15)]
+katie.CG <- data.frame(katie.CG,
+     ddRAD=getProj(proj.id='Katie...CG',flow=flow,proj=proj,ddRAD=TRUE))
+
+katie.field
+katie.CG
+
+```
+
+
+## Bernice's Samples
+
+```{r }
+bernice <- getProj(proj.id='Bernice',flow=flow,proj=proj)[,c(11:13,15)]
+data.frame(bernice,ddRAD=getProj(proj.id='Bernice',flow=flow,proj=proj,ddRAD=TRUE))
+
+```
+
+
+## Duplicated ID's
+
+```{r }
 table(ids)[table(ids)==2]
+
+```
+
+## Duplicated barcode labels
+```{r }
+table(flow.)[table(flow.)==2]
+
+```
+
+## Matched
+
+```{r }
+ids[ids %in% flow.]
+
+```
+
+## Un-matched
+
+```{r }
+ids[ids %in% flow. == FALSE]
+
+```
+
+
+```{r echo=FALSE, results='hide'}
+system('scp matchBarIDs.html matthewklau@fas.harvard.edu:public_html')
 
 ```
