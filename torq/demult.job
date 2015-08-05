@@ -6,13 +6,14 @@
 #PBS -m abe 
 #PBS -N demultiplexing
 #PBS -j oe 
+#PBS -d /N/u/mklau/Mason
 
 ddrad=ddRAD9
 tail=_R1.fastq
-rads=~/scahan/flowcell_073015/samples_out/$ddrad/scahan_20150514_$ddrad$tail #unzipped file path
-bars=~/mklau/SNPer/docs/$ddrad.barcodes #formatted: GCATG<tab>03A
+rads=~/mklau/ddRADs/$ddrad/scahan_20150514_$ddrad$tail #unzipped file path
+bars=~/mklau/SNPer/docs/$(echo $ddrad)_key.txt # formatted: GCATG<tab>03Abars=~/mklau/SNPer/docs/$(echo $ddrad)_key.txt # formatted: GCATG<tab>03A
 
-output=$(echo $(echo $rads)_demult)
+output=$(echo $ddrad)_demult
 
 mkdir $output
 cd $output

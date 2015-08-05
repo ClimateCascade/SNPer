@@ -7,7 +7,7 @@
 #PBS -N backup
 #PBS -j oe 
 
-ddrad=ddRAD9
+ddrad=ddRAD6
 tail=_R1.fastq.gz
 loc=~/scahan/flowcell_073015/samples_out/$ddrad/scahan_20150514_$ddrad$tail
 remote=$ddrad.fastq.gz
