@@ -1,0 +1,13 @@
+#! /bin/bash
+
+#PBS -k o 
+#PBS -l nodes=1:ppn=8,vmem=100gb,walltime=14:00:00
+#PBS -M matthewklau@fas.harvard.edu
+#PBS -m abe 
+#PBS -N sdaFetch
+#PBS -j oe 
+
+ddrad=ddRAD8
+loc=/N/u/mklau/Mason/mklau
+
+scp mklau@sftp.sdarchive.iu.edu:big/$ddrad/* $loc/

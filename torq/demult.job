@@ -4,18 +4,17 @@
 #PBS -l nodes=1:ppn=8,vmem=100gb,walltime=10:00:00
 #PBS -M matthewklau@fas.harvard.edu
 #PBS -m abe 
-#PBS -N demultiplexing
+#PBS -N demultiplexing8
 #PBS -j oe 
-#PBS -d /N/u/mklau/Mason
+#PBS -d /N/u/mklau/Mason/mklau/ddRADs/ddRAD8
+#=#
+# 123456789
 
-ddrad=ddRAD9
-tail=_R1.fastq
-rads=~/mklau/ddRADs/$ddrad/scahan_20150514_$ddrad$tail #unzipped file path
-bars=~/mklau/SNPer/docs/$(echo $ddrad)_key.txt # formatted: GCATG<tab>03Abars=~/mklau/SNPer/docs/$(echo $ddrad)_key.txt # formatted: GCATG<tab>03A
-
+ddrad=ddRAD8
+bars=~/SNPer/docs/$(echo $ddrad)_key.txt 
 output=$(echo $ddrad)_demult
 
 mkdir $output
 cd $output
 
-sabre se -m 1 -f $rads -b $bars -u unknown	
+sabre se -m 1 -f ../*.fastq -b $bars -u unknown	

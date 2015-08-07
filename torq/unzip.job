@@ -4,13 +4,8 @@
 #PBS -l nodes=1:ppn=8,vmem=100gb,walltime=05:00:00
 #PBS -M matthewklau@fas.harvard.edu
 #PBS -m abe 
-#PBS -N unzip
+#PBS -N unzip8
 #PBS -j oe 
+#PBS -d /N/u/mklau/Mason/mklau/ddRADs/ddRAD8
 
-ddrad=ddRAD9
-tail=_R1.fastq.gz
-file=/N/u/mklau/Mason/scahan/flowcell_073015/samples_out/$ddrad/scahan_20150514_$ddrad$tail 
-loc=/N/u/mklau/Mason/scahan/flowcell_073015/samples_out/$ddrad
-
-cd $loc
-gunzip $file
+gunzip scahan_2015_0514_ddRAD8_R1.fastq.gz
