@@ -1,0 +1,19 @@
+#! /bin/bash
+
+#PBS -k o 
+#PBS -l nodes=1:ppn=8,vmem=10gb,walltime=01:00:00
+#PBS -M matthewklau@fas.harvard.edu
+#PBS -m abe 
+#PBS -N sorting.6
+#PBS -j oe 
+#PBS -d /N/u/mklau/Mason/SNPer/src
+
+# Rscript sortProjects.R 5 ~/mklau/ddRADs ~/mklau/ddRADs/projects/katie/field
+Rscript sortProjects.R 6 ~/mklau/ddRADs ~/mklau/ddRADs/projects/katie/cg
+# Rscript sortProjects.R 9 ~/mklau/ddRADs ~/mklau/ddRADs/projects/bernice
+# Rscript sortProjects.R 2 ~/mklau/ddRADs ~/mklau/ddRADs/projects/lacy/smokies
+# Rscript sortProjects.R 3 ~/mklau/ddRADs ~/mklau/ddRADs/projects/lacy/field
+# Rscript sortProjects.R 4 ~/mklau/ddRADs ~/mklau/ddRADs/projects/lacy/phyt
+# Rscript sortProjects.R 7 ~/mklau/ddRADs ~/mklau/ddRADs/projects/mike
+# Rscript sortProjects.R 8 ~/mklau/ddRADs ~/mklau/ddRADs/projects/andrew
+# Rscript sortProjects.R 10 ~/mklau/ddRADs ~/mklau/ddRADs/projects/matt
