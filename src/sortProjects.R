@@ -6,19 +6,20 @@
 args <- commandArgs(TRUE)
 
 ## 1 Enter project name and destination directory
-library(gdata)
 source('~/SNPer/src/global.R')
-src.dir <- args[1]
-dest.dir <- args[2]
 
-flow <- read.xls('~/SNPer/docs/RADseq_flowcell_072815_barcode-masterlist.xlsx')
 proj <- read.csv('~/SNPer/docs/Data_allocation_mastersheet_01-26-15.csv')
 
-if (args[3] == 'n'){
+if (args[1] == 'n'){
     colnames(proj)
 }else{
-    proj.name <- colnames(proj)[as.numeric(args[3]]
-)
+    library(gdata)
+    flow <- read.xls('~/SNPer/docs/RADseq_flowcell_072815_barcode-masterlist.xlsx')
+    src.dir <- args[2]
+    dest.dir <- args[3]
+    if (any(strsplit(args[1],split='')[[1]] %in% as.character(0:9))){
+        proj.name <- colnames(proj)[as.numeric(args[1])]    
+    }else{proj.name <- args[1]}
 
 ## 2 Get list of sample labels
 
@@ -38,8 +39,18 @@ samples <- getProj(proj.name,flow,proj)[,c(11:13,15)]
 
 ## 3 Get list of matching seq names
 samples <- data.frame(samples,path=getFileNames(proj.name,flow,proj))
+print(samples)
 
 ## 4 copy seqs to destination directory
+for (i in 1:length(samples$path)){
+    src.file <- paste(src.dir,samples$path[i],sep='/')
+    dest.file <- paste(dest.dir,samples$path[i],sep='/')
+    sys.cmd <- paste('cp',src.file,dest.file)
+    system(sys.cmd)
+}
 
-
+Sys.time()
+print('Done!')
 ## 5 Make new barcode file?
+
+}
