@@ -4,7 +4,7 @@
 ### Assumes that SNPer is in your home directory
 
 args <- commandArgs(TRUE)
-
+### args <- c('3','~/mklau/ddRADs','~/mklau/ddRADs/projects')
 ## 1 Enter project name and destination directory
 source('~/SNPer/src/global.R')
 
