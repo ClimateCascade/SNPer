@@ -37,13 +37,13 @@ flow. <- sub(' ','',flow.)
 flow. <- sub('-','',flow.)
 flow. <- sub('_','',flow.);flow. <- sub('_','',flow.);flow. <- sub('_','',flow.)
 
-ids <- paste(proj$Site,proj$Collection_no,sep='')
-ids <- toupper(ids)
+ids. <- paste(proj$Site,proj$Collection_no,sep='')
+ids <- toupper(ids.)
 ids <- sub(' ','',ids)
 ids <- sub('-','',ids)
 ids <- sub('_','',ids);ids <- sub('_','',ids);ids <- sub('_','',ids)
 
-out <- ids[ids %in% flow.]
+out <- flow[ids %in% flow.]
 if (ddrad){
     ddrad <- sapply(ids[ids %in% flow.],
                     function(x,y) colnames(flow.)[apply(flow.,2,function(z,q) any(z == q),q=x)],

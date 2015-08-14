@@ -44,7 +44,8 @@ print(samples)
 ## 4 copy seqs to destination directory
 for (i in 1:length(samples$path)){
     src.file <- paste(src.dir,samples$path[i],sep='/')
-    dest.file <- paste(dest.dir,samples$path[i],sep='/')
+    sam <- strsplit(as.character(samples$path[i]),split='\\/')[[1]][2]
+    dest.file <- paste(dest.dir,sam,sep='/')
     sys.cmd <- paste('cp',src.file,dest.file)
     system(sys.cmd)
 }
