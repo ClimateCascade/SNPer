@@ -10,8 +10,6 @@
 
 #=# 2 3 4 5 6 7 8 9 10
 # 2 3 4 5 6 7 8 9 10
-# Note: you saved a keyboard macro "submit-job-sort"
-# you place the cursor at the end of the hash-equal-hash line
 
 # Rscript sortProjects.R 5 ~/mklau/ddRADs ~/mklau/ddRADs/projects/katie/field
 # Rscript sortProjects.R 6 ~/mklau/ddRADs ~/mklau/ddRADs/projects/katie/cg
