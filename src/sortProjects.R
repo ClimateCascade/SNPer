@@ -23,18 +23,6 @@ if (args[1] == 'n'){
 
 ## 2 Get list of sample labels
 
-flow <- apply(flow,2,as.character)
-flow. <- toupper(flow)
-flow. <- sub(' ','',flow.)
-flow. <- sub('-','',flow.)
-flow. <- sub('_','',flow.);flow. <- sub('_','',flow.);flow. <- sub('_','',flow.)
-
-ids <- paste(proj$Site,proj$Collection_no,sep='')
-ids <- toupper(ids)
-ids <- sub(' ','',ids)
-ids <- sub('-','',ids)
-ids <- sub('_','',ids);ids <- sub('_','',ids);ids <- sub('_','',ids)
-
 samples <- getProj(proj.name,flow,proj)[,c(11:13,15)]
 
 ## 3 Get list of matching seq names
@@ -50,8 +38,10 @@ for (i in 1:length(samples$path)){
     system(sys.cmd)
 }
 
-Sys.time()
+
+system(paste('ls',dest.dir))
 print('Done!')
+Sys.time()
 ## 5 Make new barcode file?
 
 }

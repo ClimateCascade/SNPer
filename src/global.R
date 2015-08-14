@@ -43,7 +43,8 @@ ids <- sub(' ','',ids)
 ids <- sub('-','',ids)
 ids <- sub('_','',ids);ids <- sub('_','',ids);ids <- sub('_','',ids)
 
-out <- flow[ids %in% flow.]
+out <- flow[flow. %in% ids]
+
 if (ddrad){
     ddrad <- sapply(ids[ids %in% flow.],
                     function(x,y) colnames(flow.)[apply(flow.,2,function(z,q) any(z == q),q=x)],
