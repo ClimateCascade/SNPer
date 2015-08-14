@@ -43,6 +43,7 @@ ids <- sub(' ','',ids)
 ids <- sub('-','',ids)
 ids <- sub('_','',ids);ids <- sub('_','',ids);ids <- sub('_','',ids)
 
+
 out <- flow[flow. %in% ids]
 
 if (ddrad){
