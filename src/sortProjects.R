@@ -5,6 +5,9 @@
 
 args <- commandArgs(TRUE)
 ### args <- c('3','~/mklau/ddRADs','~/mklau/ddRADs/projects')
+### args <- c('9','~/mklau/ddRADs','~/mklau/test/ddRADs/projects')
+### args <- c('2','~/mklau/ddRADs','~/mklau/test/ddRADs/projects')
+
 ## 1 Enter project name and destination directory
 source('~/SNPer/src/global.R')
 
@@ -22,14 +25,14 @@ if (args[1] == 'n'){
     }else{proj.name <- args[1]}
 
 ## 2 Get list of sample labels
-
-samples <- getProj(proj.name,flow,proj)[,c(11:13,15)]
-
 ## 3 Get list of matching seq names
-samples <- data.frame(samples,path=getFileNames(proj.name,flow,proj))
+samples <- getProj(proj.name,flow,proj)[,c(11:13,15)]
+samples <- list(samples,path=getFileNames(proj.name,flow,proj))
+
+## Repeat for different separations
+samples$path <- unique(c(samples$path,getFileNames(proj.name,flow,proj,sep='-')))
 print(samples)
 
-## 4 copy seqs to destination directory
 for (i in 1:length(samples$path)){
     src.file <- paste(src.dir,samples$path[i],sep='/')
     sam <- strsplit(as.character(samples$path[i]),split='\\/')[[1]][2]
@@ -37,7 +40,6 @@ for (i in 1:length(samples$path)){
     sys.cmd <- paste('cp',src.file,dest.file)
     system(sys.cmd)
 }
-
 
 system(paste('ls',dest.dir))
 print('Done!')

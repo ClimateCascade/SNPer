@@ -27,7 +27,7 @@ if (ddRAD==FALSE){proj[ids %in% flow.,]}else{
 
 }
 
-getFileNames <- function(proj.id,flow,proj,ddrad=TRUE,fq=TRUE){
+getFileNames <- function(proj.id,flow,proj,ddrad=TRUE,fq=TRUE,sep=''){
 
 proj <- proj[proj[,proj.id] == 'x',]
 
@@ -37,7 +37,7 @@ flow. <- sub(' ','',flow.)
 flow. <- sub('-','',flow.)
 flow. <- sub('_','',flow.);flow. <- sub('_','',flow.);flow. <- sub('_','',flow.)
 
-ids. <- paste(proj$Site,proj$Collection_no,sep='')
+ids. <- paste(proj$Site,proj$Collection_no,sep=sep)
 ids <- toupper(ids.)
 ids <- sub(' ','',ids)
 ids <- sub('-','',ids)
@@ -46,9 +46,7 @@ ids <- sub('_','',ids);ids <- sub('_','',ids);ids <- sub('_','',ids)
 out <- flow[flow. %in% ids]
 
 if (ddrad){
-    ddrad <- sapply(ids[ids %in% flow.],
-                    function(x,y) colnames(flow.)[apply(flow.,2,function(z,q) any(z == q),q=x)],
-                    y=flow.)
+    ddrad <- sapply(out,function(x,y) colnames(y)[apply(y,2,function(z,q) any(z==q),q=x)] ,y=flow)
     out <- paste(ddrad,names(ddrad),sep='/')
 }
 if (fq){out <- paste(out,'.fq',sep='')}
