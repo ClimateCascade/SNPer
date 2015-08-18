@@ -1,23 +1,11 @@
 #! /bin/bash
 
 #PBS -k o 
-#PBS -l nodes=1:ppn=8,vmem=10gb,walltime=00:30:00
+#PBS -l nodes=1:ppn=8,vmem=10gb,walltime=03:00:00
 #PBS -M matthewklau@fas.harvard.edu
 #PBS -m abe 
-#PBS -N sorting.1
+#PBS -N sorting
 #PBS -j oe 
 #PBS -d /N/u/mklau/Mason/SNPer/src
 
-#=# 1 2 3 4 5 6 7 8 9 10
-# 1 2 3 4 5 6 7 8 9 10
-
-# Rscript sortProjects.R 1 ~/mklau/ddRADs ~/mklau/ddRADs/projects/lacy/expression
-# Rscript sortProjects.R 2 ~/mklau/ddRADs ~/mklau/ddRADs/projects/lacy/smokies
-# Rscript sortProjects.R 3 ~/mklau/ddRADs ~/mklau/ddRADs/projects/lacy/field
-# Rscript sortProjects.R 4 ~/mklau/ddRADs ~/mklau/ddRADs/projects/lacy/phyt
-# Rscript sortProjects.R 5 ~/mklau/ddRADs ~/mklau/ddRADs/projects/katie/field
-# Rscript sortProjects.R 6 ~/mklau/ddRADs ~/mklau/ddRADs/projects/katie/cg
-# Rscript sortProjects.R 7 ~/mklau/ddRADs ~/mklau/ddRADs/projects/mike
-# Rscript sortProjects.R 8 ~/mklau/ddRADs ~/mklau/ddRADs/projects/andrew
-# Rscript sortProjects.R 9 ~/mklau/ddRADs ~/mklau/ddRADs/projects/bernice
-# Rscript sortProjects.R 10 ~/mklau/ddRADs ~/mklau/ddRADs/projects/matt
+Rscript ~/mklau/ddRADs ~/mklau/test/projects
