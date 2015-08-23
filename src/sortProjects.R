@@ -61,6 +61,7 @@ proj.id <- as.character(sapply(paste(dam[,12],dam[,13],sep=''),fixName))
 master.id <- list()
 
 ## match project names to file names in master
+
 for (i in 1:length(master.names)){
     if (sum(master.names[i] == proj.id) == 1){
         master.id[[i]] <- projects[master.names[i] == proj.id,]
