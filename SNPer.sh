@@ -9,16 +9,17 @@
 ### Setup
 ##############################
 
-#Starts with demultiplexed files in the following directory:
+## Assumes SNPer is in your home directory (~)
 
+snp=true # get snps
+rdata=true # convert to an rdata file
+
+#Starts with demultiplexed files in the following directory:
 seqdir=$1
 outdir=$2 #output directory
-
-snp=true
-rdata=false
+batchid=$3 #the batch id used in stacks ref_map.pl and genotype.pl
 
 refmap=~/indexes #~/indexes
-batchid=$3 #the batch id used in stacks ref_map.pl and genotype.pl
 nmismatch=3 #ref_map.pl -n = number of mismatches
 mindepth=5 #ref_map.pl -m = minimum depth of coverage to report a stack
 nthreads=8 #ref_map.pl -T = number of threads
@@ -41,9 +42,9 @@ cd $outdir
 
 if [ $snp = "true" ]; then 
 
-fqs=$(ls seqdir)
+fqs=$(ls $seqdir)
 
-mkdir trimmed original
+mkdir trimmed filtered
 
 for X in $fqs;
 do 
@@ -54,7 +55,6 @@ done
 
 fqs=$(ls ./trimmed)
 
-fqs=$(ls seqdir)
 for X in $fqs;
 do 
     echo $X
@@ -101,10 +101,10 @@ fi #end snp
 ### SNP Filtering and Output
 ################################
 if [ $rdata == "true" ]; then
-    mkdir rdata
+    cd $outdir
     INPUT=./output/batch_$batchid.haplotypes_$minprog.tsv
-    OUTPUT=./rdata/batch_$batchid.haplotypes_$minprog.gen
-    Rscript ../bin/haplotype_to_genepop/haplotype_to_genepop.R $INPUT $OUTPUT radtags
+    OUTPUT=./output/batch_$batchid.haplotypes_$minprog.gen
+    Rscript ~/SNPer/bin/haplotype_to_genepop/haplotype_to_genepop.R $INPUT $OUTPUT radtags
 fi
 
 # INPUT=./output/batch_$batchid.haplotypes_$minprog.tsv
@@ -122,4 +122,4 @@ fi
 # grep -v "consensus" $INPUT > $VAR
 # grep -v "\w*/\w*/" $VAR > $DIP
 # python ../haplotype_to_ambig_code.py $DIP
-# python ../SNP_to_sequence.py $AMBIG "wasDDR2.fasta"
+# # python ../SNP_to_sequence.py $AMBIG "wasDDR2.fasta"
