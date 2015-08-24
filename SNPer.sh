@@ -9,15 +9,16 @@
 ### Setup
 ##############################
 
-#Assume you are working locally (./) with unzipped and demultiplexed files
+#Starts with demultiplexed files in the following directory:
 
-outdir=ddRAD4_snps #output directory
+seqdir=$1
+outdir=$2 #output directory
 
 snp=true
 rdata=false
 
 refmap=~/indexes #~/indexes
-batchid=2 #the batch id used in stacks ref_map.pl and genotype.pl
+batchid=$3 #the batch id used in stacks ref_map.pl and genotype.pl
 nmismatch=3 #ref_map.pl -n = number of mismatches
 mindepth=5 #ref_map.pl -m = minimum depth of coverage to report a stack
 nthreads=8 #ref_map.pl -T = number of threads
@@ -40,15 +41,20 @@ cd $outdir
 
 if [ $snp = "true" ]; then 
 
-fqs=$(ls)
+fqs=$(ls seqdir)
+
 mkdir trimmed original
+
 for X in $fqs;
 do 
-    echo $X
-    $FASTX -Q33 -f 5 -l 95 -i $X -o ./trimmed/$X;
-    mv $X original/$X;
+    echo $seqdir/$X
+    $FASTX -Q33 -f 5 -l 95 -i $seqdir/$X -o ./trimmed/$X;
+#    mv $X original/$X;
 done
-mkdir filtered
+
+fqs=$(ls ./trimmed)
+
+fqs=$(ls seqdir)
 for X in $fqs;
 do 
     echo $X
